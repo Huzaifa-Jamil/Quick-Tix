@@ -1618,8 +1618,12 @@ public class QuickTix {
             if (folder.exists() && folder.isDirectory()) {
                 // Do nothing just continue
             } else {
-                // Create the folder
-                folder.mkdir();
+                // Create the file
+                try {
+                    folder.createNewFile();
+                } catch (IOException e) {
+                    // do nothing
+                }
             }
             
             FileWriter writer = new FileWriter("UserAccounts/Accounts.txt", true);
@@ -1631,7 +1635,7 @@ public class QuickTix {
             writer.write(phoneNumber.trim()+ "\n");
             writer.close();
             
-        } 
+        }
         catch (IOException e) {
             System.out.println("ERROR OCCURS WHILE SAVING ACCOUNT !!! ");
         }
