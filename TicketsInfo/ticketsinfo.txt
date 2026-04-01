@@ -1,0 +1,13 @@
+"THE LIGHT OF FAITH" , "Al-Noor Cinema" , "25th July 2025" , "After Taraweeh" , 1200
+"ROCK THE CITY LIVE!" , "Karachi Arena" , "14th Sept 2025" , "8:00 PM" , 1500
+"MOVIE: UNDER THE STARS" , "Lahore RoofTop Cinema" , "30th Augu 2025" , "7:30 PM" , 1200
+"THE LETTER" , "Madinah Convention Center" ,  "02nd Decm 2025" , "8:15 PM" , 1300
+"THE GOLDEN CHAIN" , "Al-Haramain Islamic Center" ,  "Every Friday" , "7:00 PM" , 1300
+"THE SULTAN'S LEGACY" , "Faisal Auditorium" ,  "14th Aug 2025" , "6:00 PM" , 1100
+"AVATAR: THE WAY OF WATER" , "Dolby Cinema" ,  "20th Sep 2025" , "6:45 PM" , 1500
+"OPPENHEIMER" , "70mm Film Theater" ,  "31th Jul 2025" , "10:00 PM" , 2000
+"DUNE: PART TWO" , "Laser IMAX ISL" ,  "5th Aug 2025" , "7:00 AM" , 3000
+"MISSION: IMPOSSIBLE 8" , "4DX Theater RWP" ,  "22nd Sep 2025" , "8:30 PM" , 1200
+"JOHN WICK: CHAPTER 4" , "AMC Prime Cinema" ,  "10th Jan 2026" , "9:15 PM" , 1300
+"AVENGERS: ENDGAME" , "IMAX Theater" ,  "10th Nov 2025" , "7:30 PM" , 1100
+"TIKTOK: STEM INAGURAION EVENT" , "JINNAH CONV ISL" , "4 Dec 2025" , "3:00PM" , 1000
