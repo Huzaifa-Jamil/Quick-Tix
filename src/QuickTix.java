@@ -393,7 +393,7 @@ public class QuickTix {
                     int v = hu.nextInt();
 
                     while ( v != 1 && v != 2) {
-                        System.out.print("\033[31mINVALID CHOICE\033[0m\n, PLEASE ENTER YOUR CHOICE AGAIN : \033[0m");
+                        System.out.print("\033[31mINVALID CHOICE, PLEASE ENTER YOUR CHOICE AGAIN : \033[0m");
                         v = hu.nextInt();
                     }
                     System.out.println();
@@ -420,6 +420,12 @@ public class QuickTix {
                         
                                 if (!filereader.exists()) {
                                     System.out.println("\nFOLDER \"userAccount/Account.txt\" DOES NOT EXISTS OR UNACCESIABLE\n");
+                                    try {
+                                        filereader.createNewFile();
+                                    }
+                                    catch (IOException ex) {
+                                        // do nothing
+                                    }
                                     break;
                                 }
 
@@ -451,11 +457,11 @@ public class QuickTix {
 
                             catch (FileNotFoundException ex) {
                             }    
-                            String emailaddition = "";
+                            String addition = "";
 
                             while(accountfound == false) {
                                 
-                                System.out.println("\n \033[31mERROR : ACCOUNT NOT FOUND "+ emailaddition + "\033[31m!!\033[0m\n");
+                                System.out.println("\n \033[31mERROR : ACCOUNT NOT FOUND "+ addition + "\033[31m!!\033[0m\n");
                                 System.out.println(" \033[33mPLEASE SELECT ACCOUNT VERIFICATION OPTIONS\033[0m\n");
                                 System.out.println(" \033[96m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m");
                                 System.out.println(" \033[96m\u2551\t\033[1m\033[33mACCOUNT VERIFICATION OPTIONS\033[0m \t   \033[96m\u2551\033[0m");
@@ -474,11 +480,55 @@ public class QuickTix {
                                 System.out.println();
 
                                 if (c == 1) {
-                                    System.out.println("\n \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m \n");
+                                //     System.out.println("\n \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m \n");
+                                //     System.out.print(" \033[33mPLEASE ENTER YOUR QUICKTIX ID : \033[0m");
+                                //     accountid = hu.next();
+                                //     System.out.print("\033[33m PLEASE ENTER YOUR PASSWORD    : \033[0m");
+                                //     accountpassword = hu.next();
+
+                                //     try {
+                                //         File filereader = new File("userAccounts/Accounts.txt");
+                                //         Scanner fileScanner = new Scanner(filereader);
+                                
+                                //         if (!filereader.exists()) {
+                                //             System.out.println("\nFOLDER \"userAccount/Account.txt\" DOES NOT EXISTS OR UNACCESIABLE\n");
+                                //             break;
+                                //         }
+
+                                //         String Line = "";
+
+                                //         String[] eachword = new String [5];
+
+                                //         while (fileScanner.hasNextLine()) {
+
+                                //             Line = fileScanner.nextLine();
+                                //             eachword = Line.trim().split(",");
+
+                                //             if (eachword.length == 5) {
+                                //                 String name = eachword[1].trim();
+                                //                 String password = eachword[2].trim();
+
+                                //                 if (accountid.equalsIgnoreCase(name) && accountpassword.equals(password)) {
+                                //                     accountname = eachword[0].trim();
+                                //                     accountphonenumber = eachword[4].trim();
+                                //                     accountemail = eachword[3].trim();
+                                //                     System.out.println("\n\033[32m QUICKTIX ACCOUNT SUCCESSFULLY VERIFIED !!\033[0m\n");
+                                //                     accountfound = true;
+                                //                     break;
+                                //                 }
+                                //             }
+                                //         }
+                                //         fileScanner.close();
+                                //     }
+
+                                //     
+
+                                // }   
+                                    System.out.println(" \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m \n");
                                     System.out.print(" \033[33mPLEASE ENTER YOUR QUICKTIX ID : \033[0m");
                                     accountid = hu.next();
                                     System.out.print("\033[33m PLEASE ENTER YOUR PASSWORD    : \033[0m");
-                                    accountpassword = hu.next();
+                                    accountpassword = hu.next();                        
 
                                     try {
                                         File filereader = new File("userAccounts/Accounts.txt");
@@ -486,6 +536,12 @@ public class QuickTix {
                                 
                                         if (!filereader.exists()) {
                                             System.out.println("\nFOLDER \"userAccount/Account.txt\" DOES NOT EXISTS OR UNACCESIABLE\n");
+                                            try {
+                                                filereader.createNewFile();
+                                            } 
+                                            catch (IOException ex) {
+                                                // do nothing
+                                            }
                                             break;
                                         }
 
@@ -514,17 +570,15 @@ public class QuickTix {
                                         }
                                         fileScanner.close();
                                     }
-
                                     catch (FileNotFoundException ex) {
                                         System.out.println("\nFOLDER \"userAccount/Account.txt\" DOES NOT EXISTS OR UNACCESIABLE\n");
                                     }
 
-                                    if (accountfound == false) {                        
+                                    if (accountfound == false) {      
+                                        addition = "\033[31mWITH THIS ID, MAKE SURE TO CREATE ACCOUNT FIRST \033[0m";
                                         continue;
                                     }
-
-                                }   
-
+                                }
                                 else {
 
                                     boolean emailFound = false;
@@ -560,7 +614,7 @@ public class QuickTix {
                                     }      
 
                                     if (!emailFound) {
-                                        emailaddition=  "\033[31mWITH THIS EMAIL \033[0m";
+                                        addition=  "\033[31mWITH THIS EMAIL, MAKE SURE TO CREATE ACCOUNT FIRST \033[0m";
                                         accountfound = false;
                                         continue;
                                     }
@@ -1563,6 +1617,14 @@ public class QuickTix {
         String email = emailChecker();
 
         try {
+            File folder = new File("UserAccounts/Accounts.txt");
+
+            if (folder.exists() && folder.isDirectory()) {
+                // Do nothing just continue
+            } else {
+                // Create the folder
+                folder.mkdir();
+            }
             
             FileWriter writer = new FileWriter("UserAccounts/Accounts.txt", true);
 
