@@ -1148,7 +1148,6 @@ public class QuickTix {
                 System.out.println();
             }
         }
-        ha.close();
         return phoneNumber;
     }
 
@@ -1228,7 +1227,6 @@ public class QuickTix {
                 System.out.println();
             }
         }
-        ha.close();
         return email;
     }
 
@@ -1450,7 +1448,6 @@ public class QuickTix {
             System.out.println("\033[32m CARD NUMBER, EXPIRY DATE AND CVV VERIFIED SUCESFULLY !!\033[0m\n");
             maskedCard = "****-****-***" +cardNumber.substring(cardNumber.length() - 5,cardNumber.length() - 4) + "-" + cardNumber.substring(cardNumber.length() - 4) ;
         }
-        hz.close();
         return maskedCard;
     }
     
@@ -1593,7 +1590,6 @@ public class QuickTix {
         }
 
         System.out.println("\033[36m\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m\n\n");
-        hg.close();
     }       
 
     public static void saveUserAccount() {
@@ -1639,7 +1635,7 @@ public class QuickTix {
         catch (IOException e) {
             System.out.println("ERROR OCCURS WHILE SAVING ACCOUNT !!! ");
         }
-        x.close();    }
+    }
 
     public static String printeventnames() {
         Scanner hx = new Scanner (System.in);
@@ -1704,7 +1700,6 @@ public class QuickTix {
         catch (FileNotFoundException e ) {
             System.out.println("TicketsInfo/ticketsinfo.txt is not opening due to error");
         }
-        hx.close();
 
         return event;    
     }
