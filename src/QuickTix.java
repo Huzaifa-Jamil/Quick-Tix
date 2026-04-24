@@ -1646,12 +1646,32 @@ public class QuickTix {
         int counter = 0;
 
         try {
+            File Folder = new File ("TicketsInfo");
             File eventfile = new File("TicketsInfo/ticketsinfo.txt");
+
+            try {
+                if (!(Folder.exists())) {
+                    Folder.mkdirs();
+                }
+
+                if (!eventfile.exists()) {
+                    eventfile.createNewFile();
+                }
+            }
+            catch (IOException e) {
+                System.out.println("ERROR OCCURS WHILE OPENING FILE !!! ");           
+            }
+
             Scanner fileScanner = new Scanner(eventfile);
             
             System.out.println(" \033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m");
             System.out.println(" \033[36m\u2551\033[0m\t\t\t \033[1m\033[33m\"\033[4mEVENT'S LIST\033[0m\"\033[0m\t\t\t         \033[36m\u2551\033[0m"); 
             System.out.println(" \033[36m\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\033[0m");
+
+            if (!fileScanner.hasNextLine()) {
+                System.out.println("\n\033[33mEVENT FILE IS EMPTY. NO EVENTS TO PRINT !!\033[0m");
+                return "";
+            }
 
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
@@ -1659,7 +1679,7 @@ public class QuickTix {
                 
                 System.out.printf (" \033[36m\u2551\033[0m\033[33m %2d.\033[0m \033[34m%-58s\033[36m\u2551\033[0m\033[0m\n", (counter+1), tokens[0]);
                 counter++;
-                if (!(fileScanner.hasNext())) {
+                if (!(fileScanner.hasNextLine())) {
                     System.out.println(" \033[36m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m");
                 }
                 else {
@@ -1671,22 +1691,53 @@ public class QuickTix {
         catch (FileNotFoundException e ) {
             System.out.println("TicketsInfo/ticketsinfo.txt is not opening due to error");
         }
+        
+        int t;
+        while (true) {
+            System.out.print("\n \033[33mENTER YOUR CHOICE : \033[0m");
+            if (hx.hasNextInt()) {
+                t = hx.nextInt();
 
-        System.out.print("\n \033[33mENTER YOUR CHOICE : \033[0m");
-        int t = hx.nextInt();
-                    
-        while (!(t >= 1 && t <= counter)) {
-            System.out.print("\n \033[31mINVALID CHOICE, PLEASE ENTER YOUR CHOICE AGAIN : \033[0m");
-            t = hx.nextInt();
+                if (t >= 1 && t <= counter) {
+                    break;
+                }
+                else {
+                    System.out.print("\n \033[31mINVALID CHOICE !! \n\033[0m");
+
+                }
+            }
+            else {
+                System.out.print("\n \033[31mINVALID CHOICE !! \n\033[0m");
+                hx.next();
+            }
         }
 
         String event = "";
-                
         try {
-            File file = new File("TicketsInfo/ticketsinfo.txt");
-            Scanner fileS = new Scanner(file);
+           File Folder = new File ("TicketsInfo");
+            File eventfile = new File("TicketsInfo/ticketsinfo.txt");
+
+            try {
+                if (!(Folder.exists())) {
+                    Folder.mkdirs();
+                }
+
+                if (!eventfile.exists()) {
+                    eventfile.createNewFile();
+                }
+            }
+            catch (IOException e) {
+                System.out.println("ERROR OCCURS WHILE OPENING FILE !!! ");           
+            }
+
+            Scanner fileS = new Scanner(eventfile);
             int linenmber = 1;
-                        
+
+            if (!fileS.hasNextLine()) {
+                System.out.println("\n\033[33mEVENT FILE IS EMPTY. NO EVENTS TO PRINT !!\033[0m");
+                return "";
+            }
+
             while (fileS.hasNextLine()) {
                 
                 String line = fileS.nextLine().trim();
