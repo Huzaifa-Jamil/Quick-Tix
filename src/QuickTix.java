@@ -480,51 +480,7 @@ public class QuickTix {
                                 }
                                 System.out.println();
 
-                                if (c == 1) {
-                                //     System.out.println("\n \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m \n");
-                                //     System.out.print(" \033[33mPLEASE ENTER YOUR QUICKTIX ID : \033[0m");
-                                //     accountid = hu.next();
-                                //     System.out.print("\033[33m PLEASE ENTER YOUR PASSWORD    : \033[0m");
-                                //     accountpassword = hu.next();
-
-                                //     try {
-                                //         File filereader = new File("userAccounts/Accounts.txt");
-                                //         Scanner fileScanner = new Scanner(filereader);
-                                
-                                //         if (!filereader.exists()) {
-                                //             System.out.println("\nFOLDER \"userAccount/Account.txt\" DOES NOT EXISTS OR UNACCESIABLE\n");
-                                //             break;
-                                //         }
-
-                                //         String Line = "";
-
-                                //         String[] eachword = new String [5];
-
-                                //         while (fileScanner.hasNextLine()) {
-
-                                //             Line = fileScanner.nextLine();
-                                //             eachword = Line.trim().split(",");
-
-                                //             if (eachword.length == 5) {
-                                //                 String name = eachword[1].trim();
-                                //                 String password = eachword[2].trim();
-
-                                //                 if (accountid.equalsIgnoreCase(name) && accountpassword.equals(password)) {
-                                //                     accountname = eachword[0].trim();
-                                //                     accountphonenumber = eachword[4].trim();
-                                //                     accountemail = eachword[3].trim();
-                                //                     System.out.println("\n\033[32m QUICKTIX ACCOUNT SUCCESSFULLY VERIFIED !!\033[0m\n");
-                                //                     accountfound = true;
-                                //                     break;
-                                //                 }
-                                //             }
-                                //         }
-                                //         fileScanner.close();
-                                //     }
-
-                                //     
-
-                                // }   
+                                if (c == 1) { 
                                     System.out.println(" \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m \n");
                                     System.out.print(" \033[33mPLEASE ENTER YOUR QUICKTIX ID : \033[0m");
                                     accountid = hu.next();
