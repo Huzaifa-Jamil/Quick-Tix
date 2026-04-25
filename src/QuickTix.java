@@ -1,6 +1,6 @@
 package src;
-import java.io.*;
 import java.awt.Desktop;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -1461,6 +1461,12 @@ public class QuickTix {
         
         try {
 
+            File Folder = new File("Tickets");
+
+            if (!(Folder.exists())) {
+                Folder.mkdirs();
+            }
+
             String filePath = "Tickets/" + accountname.trim().replace(" ", "").toLowerCase() + "ticketfor" + event.trim().replace(" ", "").replace("\"", "").replace(":", "").toLowerCase() + ".txt";
 
             FileWriter writer = new FileWriter(filePath);
@@ -1468,7 +1474,6 @@ public class QuickTix {
             String currentTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
             String currentDate = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
         
-
             String seatNumbers = String.join(", ", seats);
         
             String[] ticket = {
@@ -1496,7 +1501,7 @@ public class QuickTix {
                 String.format("\u2551  %-14s: %-31s \u2551", "TOTAL PAID", "Rs." + String.format("%.2f", grossfair) + "/-"),
                 String.format("\u2551  %-14s: %-31s \u2551", "CHANGE", "Rs." + String.format("%.2f", (amount - grossfair)) + "/-"),
                 String.format("\u2551  %-14s: %-31s \u2551", "PAYMENT METHOD", paymentmode),
-                String.format("\u2551  %-14s: %-29s \u2551", "PAYMENT REFRENCE", maskednumber),
+                String.format("\u2551  %-14s: %-29s \u2551", "PAYMENT REFERENCE", maskednumber),
                 "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
                 "\u2551          \"\u001B[4mTHANK YOU FOR YOUR PURCHASE!\u001B[0m\"          \u2551",
                 String.format("\u2551  %-14s: %-31s \u2551", "GENERATED ON", currentDate),
@@ -1506,56 +1511,55 @@ public class QuickTix {
 
             System.out.println("\n\t\t\t\t\t\t\t\t  PREVIEW OF YOUR TICKET IS  \n");
             for (int i = 0; i< ticket.length; i ++) {
-            String line = ticket[i];
-            System.out.print("\t\t\t\t\t\t\t" + line + "\n");
-        }
+                String line = ticket[i];
+                System.out.print("\t\t\t\t\t\t\t" + line + "\n");
+            }
 
-        String[] tickettxt = {
-            "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557",
-                "\u2551            \"\u001B[4mQUICKTIX TICKET RECEIPT\u001B[0m\"             \u2551",
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                String.format("\u2551  %-14s: %-31s \u2551", "NAME", accountname),
-                String.format("\u2551  %-14s: %-31s \u2551", "PHONE NO.", accountphonenumber),
-                String.format("\u2551  %-14s: %-31s \u2551", "EMAIL", accountemail),
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                "\u2551                \"\u001B[4mEVENT DETAILS\u001B[0m\"                   \u2551",
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                String.format("\u2551  %-14s: %-31s \u2551", "EVENT", event),
-                String.format("\u2551  %-14s: %-31s \u2551", "VENUE", venu),
-                String.format("\u2551  %-14s: %-31s \u2551", "DATE", date),
-                String.format("\u2551  %-14s: %-31s \u2551", "TIME", time),
-                String.format("\u2551  %-14s: %-31d \u2551", "SEATS", noofseats),
-                String.format("\u2551  %-14s: %-31s \u2551", "SEAT NUMBERS", seatNumbers),
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                "\u2551             \"\u001B[4mPAYMENT INFORMATION\u001B[0m\"                \u2551",
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                String.format("\u2551  %-14s: %-31s \u2551", "GROSS AMOUNT", "Rs." + String.format("%.2f", allamount) + "/-"),
-                String.format("\u2551  %-14s: %-31s \u2551", "DISCOUNT", disccountpercent),
-                String.format("\u2551  %-14s: %-30s \u2551", "DISCOUNT AMOUNT", "Rs." + String.format("%.2f", discount) + "/-"),
-                String.format("\u2551  %-14s: %-31s \u2551", "TOTAL PAID", "Rs." + String.format("%.2f", grossfair) + "/-"),
-                String.format("\u2551  %-14s: %-31s \u2551", "CHANGE", "Rs." + String.format("%.2f", (amount - grossfair)) + "/-"),
-                String.format("\u2551  %-14s: %-31s \u2551", "PAYMENT METHOD", paymentmode),
-                String.format("\u2551  %-14s: %-29s \u2551", "PAYMENT REFRENCE", maskednumber),
-                "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
-                "\u2551          \"\u001B[4mTHANK YOU FOR YOUR PURCHASE!\u001B[0m\"          \u2551",
-                String.format("\u2551  %-14s: %-31s \u2551", "GENERATED ON", currentDate),
-                String.format("\u2551  %-14s: %-31s \u2551", "TIME", currentTime),
-                "\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D"
-        };
-        for (int i = 0; i< tickettxt.length; i++) {
-            String line = tickettxt[i];
-            writer.write("\t\t\t\t\t\t\t" + line + "\n");
-        }
+            String[] tickettxt = {
+                "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557",
+                    "\u2551            \"QUICKTIX TICKET RECEIPT\"             \u2551",
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    String.format("\u2551  %-14s: %-31s \u2551", "NAME", accountname),
+                    String.format("\u2551  %-14s: %-31s \u2551", "PHONE NO.", accountphonenumber),
+                    String.format("\u2551  %-14s: %-31s \u2551", "EMAIL", accountemail),
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    "\u2551                \"EVENT DETAILS\"                   \u2551",
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    String.format("\u2551  %-14s: %-31s \u2551", "EVENT", event),
+                    String.format("\u2551  %-14s: %-31s \u2551", "VENUE", venu),
+                    String.format("\u2551  %-14s: %-31s \u2551", "DATE", date),
+                    String.format("\u2551  %-14s: %-31s \u2551", "TIME", time),
+                    String.format("\u2551  %-14s: %-31d \u2551", "SEATS", noofseats),
+                    String.format("\u2551  %-14s: %-31s \u2551", "SEAT NUMBERS", seatNumbers),
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    "\u2551             \"PAYMENT INFORMATION\"                \u2551",
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    String.format("\u2551  %-14s: %-31s \u2551", "GROSS AMOUNT", "Rs." + String.format("%.2f", allamount) + "/-"),
+                    String.format("\u2551  %-14s: %-31s \u2551", "DISCOUNT", disccountpercent),
+                    String.format("\u2551  %-14s: %-30s \u2551", "DISCOUNT AMOUNT", "Rs." + String.format("%.2f", discount) + "/-"),
+                    String.format("\u2551  %-14s: %-31s \u2551", "TOTAL PAID", "Rs." + String.format("%.2f", grossfair) + "/-"),
+                    String.format("\u2551  %-14s: %-31s \u2551", "CHANGE", "Rs." + String.format("%.2f", (amount - grossfair)) + "/-"),
+                    String.format("\u2551  %-14s: %-31s \u2551", "PAYMENT METHOD", paymentmode),
+                    String.format("\u2551  %-14s: %-29s \u2551", "PAYMENT REFERENCE", maskednumber),
+                    "\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563",
+                    "\u2551          \"THANK YOU FOR YOUR PURCHASE!\"          \u2551",
+                    String.format("\u2551  %-14s: %-31s \u2551", "GENERATED ON", currentDate),
+                    String.format("\u2551  %-14s: %-31s \u2551", "TIME", currentTime),
+                    "\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D"
+            };
 
-       
-        System.out.println("\033[32m\nTICKET SUCCESFULLY SAVED TO \"" + filePath + "\"\033[0m\n");
-        
-        writer.close();
-    }
+            for (int i = 0; i< tickettxt.length; i++) {
+                String line = tickettxt[i];
+                writer.write("\t\t\t\t\t\t\t" + line + "\n");
+            }
+
+            System.out.println("\033[32m\nTICKET SUCCESFULLY SAVED TO \"" + filePath + "\"\033[0m\n");
+            writer.close();
+        }
         catch (IOException e) {
-            System.out.println("AN ERROR OCCURS WHILE TICKET SAVING");
+            System.out.println("\n\033[31m AN ERROR OCCURS WHILE TICKET SAVING\033[0m");
         }
-    } 
+    }
 
     
     public static void showTicket() {
