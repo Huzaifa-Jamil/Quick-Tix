@@ -1091,7 +1091,7 @@ public class QuickTix {
         Scanner ha = new Scanner(System.in);
         
         System.out.print("\033[33mNUMBER (WITHOUT DASHES) : \033[0m");
-        String phoneNumber = ha.nextLine(); 
+        String phoneNumber = ha.nextLine().trim(); 
         System.out.println();
 
         boolean phonenumbercheck = false;
@@ -1099,12 +1099,18 @@ public class QuickTix {
         while (phonenumbercheck != true ) {
 
             phonenumbercheck = false;
-
             boolean hasValidLength = false;
             boolean startsWith03 = false;
             boolean allDigits = false;
             boolean isnotempty = false;
             
+            if (!(phoneNumber.isEmpty())) {
+                isnotempty = true;
+            }
+            else {
+                System.out.println("\033[31m ERROR : PHONE NUMBER CAN'T BE LEFT EMPTY !!\033[0m");
+            }
+
             if (phoneNumber.length() == 11) {
                 hasValidLength = true;
             } 
@@ -1112,18 +1118,11 @@ public class QuickTix {
                 System.out.println("\033[31m ERROR : PHONE NUMBER LENGTH MUST BE 11 !!\033[0m");
             }
 
-            if (!(phoneNumber.isEmpty())) {
-                isnotempty = true;
-            }
-            else {
-                System.out.println("\033[31m ERROR : PHONE NUMBER CAN'T BE LEFT EMPTY !!");
-            }
-
             if (phoneNumber.charAt(0) == '0' && phoneNumber.charAt(1) == '3') {
                 startsWith03 = true;
             }
             else {
-                System.out.println("\033[31m ERROR : PHONE NUMBER MUST START WITH \"03\" !!");
+                System.out.println("\033[31m ERROR : PHONE NUMBER MUST START WITH \"03\" \033[0m!!");
             }
 
             for (int i = 0; i < phoneNumber.length(); i++) {
@@ -1132,20 +1131,20 @@ public class QuickTix {
                     allDigits = true;
                 }
                 else {
-                    System.out.println("\033[31m ERROR : PHONE NUMBER MUST CONTAIN ONLY DIGITS !!");
+                    System.out.println("\033[31m ERROR : PHONE NUMBER MUST CONTAIN ONLY DIGITS !! \033[0m");
                     break;
                 }
             }
 
             phonenumbercheck = hasValidLength && startsWith03 && allDigits && isnotempty;
-            
+
             if (phonenumbercheck == true ) {
                 System.out.println("\033[32m PHONE NUMBER VERIFIED!!\033[0m\n");
                 break;
             }
             else {
                 System.out.print("\n\033[33m ENTER PHONE NUMBER AGAIN (WITHOUT DASHES) : \033[0m");
-                phoneNumber = ha.nextLine();
+                phoneNumber = ha.nextLine().trim();
                 System.out.println();
             }
         }
@@ -1156,12 +1155,12 @@ public class QuickTix {
         Scanner ha = new Scanner(System.in);
         
         System.out.print("\033[33m ENTER YOUR EMAIL (SMALL LETTERS ONLY AND NO SPACE) : \033[0m");
-        String email = ha.nextLine();
+        String email = ha.nextLine().trim();
         System.out.println(); 
 
         boolean emialcheck = false;
 
-        while (emialcheck != true ) {
+        while (!emialcheck) {
 
             emialcheck = false;
 
@@ -1171,6 +1170,13 @@ public class QuickTix {
             boolean isnotempty = false;
             boolean notcontainspace = false;
             boolean firstisletter = false;
+
+            if (!(email.isEmpty())) {
+                isnotempty = true;
+            }
+            else {
+                System.out.println("\033[31m ERROR : EMAIL CAN'T BE LEFT EMPTY !!\033[0m");
+            }
             
             if (email.contains("@")) {
                 containatrate = true;
@@ -1183,28 +1189,21 @@ public class QuickTix {
                 notcontainspace = true;
             } 
             else {
-                System.out.println("\033[31m ERROR : EMAIL MUST NOT HAVE ANT SPACE !!\033[0m");
+                System.out.println("\033[31m ERROR : EMAIL MUST NOT HAVE ANY SPACE !!\033[0m");
             }
 
-            if (Character.isLetter(email.charAt(0))) {
+            if (!email.isEmpty() && Character.isLetter(email.charAt(0))) {
                 firstisletter = true;
             } 
-            else {
+            else if (!email.isEmpty()) {
                 System.out.println("\033[31m ERROR : EMAIL FIRST CHARACTER IS ALWAYS A LETTER !!\033[0m");
-            }
-
-            if (!(email.isEmpty())) {
-                isnotempty = true;
-            }
-            else {
-                System.out.println("\033[31m ERROR : EMAIL CAN'T BE LEFT EMPTY !!\033[0m");
             }
 
             if (email.length() >= 6) {
                 validlength = true;
             }
             else {
-                System.out.println("\033[31m ERROR : EMAIL MUST HAVE LENGTH OF ATLEAST 6 !!\033[0m");
+                System.out.println("\033[31m ERROR : EMAIL MUST HAVE LENGTH OF AT LEAST 6 !!\033[0m");
             }
 
             if ( containatrate == true) {
@@ -1212,8 +1211,9 @@ public class QuickTix {
                 String afterdot = email.substring(atIndex);
                 containdot = afterdot.contains(".");
             }
-            if (containdot != true) {
-                System.out.println("\033[31m ERROR : EMAIL MUST CONTAIN DOT AFTER @ \033[0m");
+
+            if (containatrate && !containdot) {
+                System.out.println("ERROR : EMAIL MUST CONTAIN DOT AFTER @\033[0m");
             }
            
             emialcheck = containatrate && validlength && containdot && isnotempty && notcontainspace && firstisletter;
@@ -1224,7 +1224,7 @@ public class QuickTix {
             }
             else {
                 System.out.print("\n\033[33m ENTER EMAIL AGAIN (SMALL LETTERS ONLY AND NO SPACE) : \033[0m");
-                email = ha.nextLine();
+                email = ha.nextLine().trim();
                 System.out.println();
             }
         }
