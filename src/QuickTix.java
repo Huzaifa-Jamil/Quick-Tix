@@ -1,5 +1,6 @@
 package src;
 import java.io.*;
+import java.awt.Desktop;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -1573,19 +1574,25 @@ public class QuickTix {
 
             File file = new File(filePath);
 
-            Scanner hj = new Scanner (file);
+            if (!file.exists()) {
+                System.out.println("\n\033[31mTICKET NOT FOUND! PLEASE RESERVE FIRST.\033[0m");
+                return;
+            }
 
             if (file.exists()) {
-                System.out.println("\n\033[33m\t\t\t\t\t\t\t\t    \"PREVIEW OF YOUR TICKET !!!\"\033[0m\n");
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        System.out.println("\n\033[33m\t\t\t\t\t\t\t\t    \"PREVIEW OF YOUR TICKET !!!\"\033[0m\n");
+                        Desktop.getDesktop().open(file);
+                    } catch (IOException e) {
+                        System.out.println("\n\033[31m CANNOT OPEN FILE IN YOUR SYSTEM !!\033[0m");
+                    }
+                }
             }
 
-            while (hj.hasNextLine()) {
-                System.out.println(hj.nextLine());
-            }
-            hj.close();
-            System.out.println("\n\033[32m FOR PRINTING DOWNLOAD THIS FILE \"" + filePath + "\" !!\033[0m\n");  
+            System.out.println("\n\033[32m FILE IS SAVED AT \"" + filePath + "\" !!\033[0m\n"); 
         }
-        catch (IOException e) {
+        catch (Exception e) {
             System.out.println("\n\033[31m ERROR : TICKET NOT FOUND PLEASE RESERVE TICKET FIRST !!!\033[0m");
         }
 
