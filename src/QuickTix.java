@@ -1596,47 +1596,69 @@ public class QuickTix {
 
         Scanner x = new Scanner(System.in);
 
-        System.out.println("\n\033[34m PLEASE ENTER FOLLOWING CREDENTIALS INORDER TO CREATE QUICKTIX ACCOUNT \033[0m\n");
+        System.out
+                .println("\n\033[34m PLEASE ENTER FOLLOWING CREDENTIALS INORDER TO CREATE QUICKTIX ACCOUNT \033[0m\n");
 
-        System.out.print("\033[33m ENTER YOUR FULL NAME : \033[0m");
-        String fullName = x.nextLine();
-                    
-        System.out.print("\n\033[33m CHOOSE A USER ID : \033[0m");
-        String username = x.next();
-                    
-        System.out.print("\n\033[33m CREATE A PASWORD : \033[0m");
-        String password = x.next();
-                    
+        String fullName;
+        do {
+            System.out.print("\033[33m ENTER YOUR FULL NAME : \033[0m");
+            fullName = x.nextLine().trim();
+
+            if (fullName.isEmpty()) {
+                System.out.println("\033[31m FULL NAME CANNOT BE EMPTY !!\033[0m");
+            }
+
+        } while (fullName.isEmpty());
+
+        String username;
+        do {
+            System.out.print("\n\033[33m CHOOSE A USER ID : \033[0m");
+            username = x.nextLine().trim();
+
+            if (username.isEmpty()) {
+                System.out.println("\033[31m ID CANNOT BE EMPTY !!\033[0m");
+            }
+
+        } while (username.isEmpty());
+
+        String password;
+        do {
+            System.out.print("\n\033[33m CREATE A PASSWORD : \033[0m");
+            password = x.nextLine().trim();
+
+            if (password.isEmpty()) {
+                System.out.println("\033[31m PASSWORD CANNOT BE EMPTY !! \033[0m");
+            }
+
+        } while (password.isEmpty());
+
         System.out.print("\n\033[33m ENTER YOUR PHONE \033[0m");
         String phoneNumber = phoneNumberCheck();
 
         String email = emailChecker();
 
         try {
-            File folder = new File("UserAccounts/Accounts.txt");
 
-            if (folder.exists() && folder.isDirectory()) {
-                // Do nothing just continue
-            } else {
-                // Create the file
-                try {
-                    folder.createNewFile();
-                } catch (IOException e) {
-                    // do nothing
-                }
+            File folder = new File("UserAccounts");
+            if (!folder.exists()) {
+                folder.mkdirs();
             }
-            
-            FileWriter writer = new FileWriter("UserAccounts/Accounts.txt", true);
 
-            writer.write(fullName.trim()+ ", ");
-            writer.write(username.trim()+ ", ");
-            writer.write(password.trim()+ ", ");
-            writer.write(email.trim()+ ", ");
-            writer.write(phoneNumber.trim()+ "\n");
+            File file = new File(folder, "Accounts.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter writer = new FileWriter(file, true);
+
+            writer.write(fullName.trim() + ", ");
+            writer.write(username.trim() + ", ");
+            writer.write(password.trim() + ", ");
+            writer.write(email.trim() + ", ");
+            writer.write(phoneNumber.trim() + "\n");
             writer.close();
-            
-        }
-        catch (IOException e) {
+
+        } catch (IOException e) {
             System.out.println("ERROR OCCURS WHILE SAVING ACCOUNT !!! ");
         }
     }
