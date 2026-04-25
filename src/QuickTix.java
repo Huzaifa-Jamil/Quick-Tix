@@ -1239,7 +1239,7 @@ public class QuickTix {
         String maskedCard = "";
 
         System.out.print("\033[33m ENTER CREDIT CARD NUMBER (WITHOUT SPACES/DASHES) : \033[0m");
-        String cardNumber = hz.nextLine();
+        String cardNumber = hz.nextLine().trim();
         System.out.println();
 
         while (validcardnumber != true) {
@@ -1308,7 +1308,7 @@ public class QuickTix {
             } 
             else {
                 System.out.print("\n\033[33m AGAIN ENTER CREDIT CARD NUMBER (WITHOUT SPACES/DASHES) : \033[0m");
-                cardNumber = hz.nextLine();
+                cardNumber = hz.nextLine().trim();
                 System.out.println();
 
             }
@@ -1317,7 +1317,7 @@ public class QuickTix {
         String expirydate;
 
         System.out.print("\033[33m ENTER EXPIRATION DATE (MM/YYYY): \033[0m");
-        expirydate = hz.nextLine();
+        expirydate = hz.nextLine().trim();
         System.out.println();
 
         boolean validdate = false;
@@ -1331,71 +1331,67 @@ public class QuickTix {
             boolean continslash = false;
             boolean donthasspace = false;
 
-                
+            if (!(expirydate.contains(" "))) {
+                donthasspace = true;
+            } 
+            else {
+                System.out.println("\033[31m ERROR : EXPIRY DATE MUST NOT HAVE ANT SPACE !!\033[0m");
+            }
+
+            if (expirydate.length() == 7) {
+                validlength = true;
+            } 
+            else {
+                System.out.println("\033[31m ERROR : INCORECT EXPIRY DATE PLEASE ENTER MONTHS ,SLASH AND THAN YEARS !!\033[0m");
+            }
+
+            if (expirydate.contains("/")) {
+                continslash = true;
+            } 
+            else {
+                System.out.println("\033[31m ERROR : EXPIRY DATE DOES NOT CONTAIN SLASH !!\033[0m");
+            }
                     
-                if (!(expirydate.contains(" "))) {
-                    donthasspace = true;
-                } 
+            String [] expirydateparts = expirydate.trim().split("/");
+
+            for (int i = 0; i < expirydateparts.length ; i++) {
+
+                if (expirydateparts[0].length() == 2 && Integer.parseInt(expirydateparts[0]) >= 1 && Integer.parseInt(expirydateparts[0]) <= 12) {
+                    monthcheck = true;
+                }
+
                 else {
-                    System.out.println("\033[31m ERROR : EXPIRY DATE MUST NOT HAVE ANT SPACE !!\033[0m");
-                }
-
-                if (expirydate.length() == 7) {
-
-                    validlength = true;
-                } 
-                else {
-                    System.out.println("\033[31m ERROR : INCORECT EXPIRY DATE PLEASE ENTER MONTHS ,SLASH AND THAN YEARS !!\033[0m");
-                }
-
-                if (expirydate.contains("/")) {
-
-                    continslash = true;
-                } 
-                else {
-                    System.out.println("\033[31m ERROR : EXPIRY DATE DOES NOT CONTAIN SLASH !!\033[0m");
-                }
-                    
-                String [] expirydateparts = expirydate.trim().split("/");
-
-                for (int i = 0; i < expirydateparts.length ; i++) {
-
-                    if (expirydateparts[0].length() == 2 && Integer.parseInt(expirydateparts[0]) >= 1 && Integer.parseInt(expirydateparts[0]) <= 12) {
-                        monthcheck = true;
-                    }
-
-                    else {
-                        System.out.println("\033[31m ERROR : INVALID MONTH IN EXPIRY DATE !!\033[0m");
-                        break;
-                    }
-
-                    if( expirydateparts[1].length() == 4 && Integer.parseInt(expirydateparts[1]) >= 1958 && Integer.parseInt(expirydateparts[1]) <= 2035) {
-                        yearcheck = true;
-                    }
-
-                    else {
-                        System.out.println("\033[31m ERROR : INVALID YEAR OR CARD EXPIRES !!\033[0m");
-                        break;
-                    }
-                }
-
-                validdate = yearcheck && monthcheck && continslash && validlength && donthasspace;
-                if (validdate == true) {
-                    System.out.println("\033[32m EXPIRY DATE VERIFIED SUCCESFULLY !!\033[0m\n");
+                    System.out.println("\033[31m ERROR : INVALID MONTH IN EXPIRY DATE !!\033[0m");
                     break;
                 }
-                else {
-                    System.out.print("\n\033[33m INVALID FORMAT,ENTER EXPIRY DATE AGAIN : \033[0m");
-                    expirydate = hz.nextLine(); 
-                    System.out.println();
-                    validdate = false;
+
+                if( expirydateparts[1].length() == 4 && Integer.parseInt(expirydateparts[1]) >= 1958 && Integer.parseInt(expirydateparts[1]) <= 2035) {
+                    yearcheck = true;
                 }
+
+                else {
+                    System.out.println("\033[31m ERROR : INVALID YEAR OR CARD EXPIRES !!\033[0m");
+                    break;
+                }
+            }
+
+            validdate = yearcheck && monthcheck && continslash && validlength && donthasspace;
+            if (validdate == true) {
+                System.out.println("\033[32m EXPIRY DATE VERIFIED SUCCESFULLY !!\033[0m\n");
+                break;
+            }
+            else {
+                System.out.print("\n\033[33m INVALID FORMAT,ENTER EXPIRY DATE AGAIN : \033[0m");
+                expirydate = hz.nextLine(); 
+                System.out.println();
+                validdate = false;
+            }
         }
 
         String cvv;
 
         System.out.print("\033[33m ENTER CVV (3-4 DIGITS): \033[0m\033[0m");
-        cvv = hz.nextLine();
+        cvv = hz.nextLine().trim();
         System.out.println();
 
         boolean validcvv = false;
@@ -1438,7 +1434,7 @@ public class QuickTix {
             }
             else {
                 System.out.print("\n\033[33m INVALID, ENTER CVV AGAIN (3-4 DIGITS) : \033[0m");
-                cvv = hz.nextLine();
+                cvv = hz.nextLine().trim();
                 System.out.println();
             }
         }
@@ -1561,7 +1557,7 @@ public class QuickTix {
         }
     }
 
-    
+
     public static void showTicket() {
         Scanner hg = new Scanner (System.in);
         try {
