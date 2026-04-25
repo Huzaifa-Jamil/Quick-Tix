@@ -7,9 +7,18 @@ import java.util.*;
 public class QuickTix {
     public static void main(String[] args) {
 
+        try {
+            ProcessBuilder pbuilder = new ProcessBuilder("cmd", "/c", "mode con: cols=140 lines=40");
+            pbuilder.inheritIO();
+            pbuilder.start().waitFor();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Scanner hu = new Scanner (System.in);
-        int user = 0;
-        Boolean exitapp = false;
+        int user;
+        boolean exitapp = false;
 
         do {
 
