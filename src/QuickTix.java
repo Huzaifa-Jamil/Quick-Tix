@@ -9,6 +9,10 @@ public class QuickTix {
     // Global Scanner
     private static Scanner scanner = new Scanner(System.in);
 
+    // Global Base Path
+    private static final String BASE_PATH = System.getProperty("user.home") + 
+    "\\AppData\\Local\\QuickTix\\app\\";
+
     public static void main(String[] args) {
 
         int user;
@@ -370,7 +374,6 @@ public class QuickTix {
                             System.out.println("\t\t\t\t\t\t\033[32m\u2551\033[0m\033[35m%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\033[0m\033[32m\u2551\033[0m");
                             System.out.println("\t\t\t\t\t\t\033[32m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m");
                             System.out.println();
-
                             System.out.println("\033[36m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m\n\n");
                             break;
                         }
@@ -382,8 +385,8 @@ public class QuickTix {
                 break;
 
                 case 2 : {
-                    Boolean accountfound = false;
 
+                    Boolean accountfound = false;
                     System.out.println("\033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m\n");
                     System.out.println("                                                                         \033[1m\033[33m\"\u001B[4mUSER INFORMATION\u001B[0m\033[0m\"");
                     System.out.println();
@@ -426,7 +429,8 @@ public class QuickTix {
                             System.out.println(" \033[34mENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m ");
 
                             do {
-                            System.out.print(" \n\033[33m PLEASE ENTER YOUR QUICKTIX ID : \033[0m");
+
+                                System.out.print(" \n\033[33m PLEASE ENTER YOUR QUICKTIX ID : \033[0m");
                                 accountid = scanner.nextLine().trim();
 
                                 if (accountid.isEmpty()) {
@@ -436,7 +440,8 @@ public class QuickTix {
                             } while (accountid.isEmpty());
 
                             do {
-                            System.out.print("\n\033[33m PLEASE ENTER YOUR PASSWORD    : \033[0m");
+
+                                System.out.print("\n\033[33m PLEASE ENTER YOUR PASSWORD    : \033[0m");
                                 accountpassword = scanner.nextLine().trim();
 
                                 if (accountpassword.isEmpty()) {
@@ -446,8 +451,10 @@ public class QuickTix {
                             } while (accountpassword.isEmpty());                       
 
                             try {
-                                File folder = new File("UserAccounts");
+
+                                File folder = new File(BASE_PATH + "UserAccounts");
                                 if (!folder.exists()) {
+
                                     if (folder.mkdirs()) {
                                         System.out.println("\n\033[31m NO ACCOUNTS FOUND. PLEASE CREATE AN ACCOUNT FIRST !!\033[0m\n");
                                     } else {
@@ -470,7 +477,6 @@ public class QuickTix {
 
                                 Scanner fileScanner = new Scanner(file);
                                 String Line = "";
-
                                 String[] eachword = new String [5];
 
                                 while (fileScanner.hasNextLine()) {
@@ -513,6 +519,7 @@ public class QuickTix {
                                 int c = 0;
 
                                 while (true) {
+
                                     System.out.print("\n \033[33mENTER YOUR CHOICE : \033[0m");
                                     try {
                                         String input = scanner.nextLine().trim();
@@ -532,6 +539,7 @@ public class QuickTix {
                                 System.out.println();
                             
                                 if (c == 1) {
+
                                     System.out.println(" \033[34mRE-ENTER CREDENTIALS OF QUICKTIX ACCOUNT\033[0m");
                                     do {
                                         System.out.print(" \n\033[33m PLEASE ENTER YOUR QUICKTIX ID : \033[0m");
@@ -554,7 +562,8 @@ public class QuickTix {
                                         } while (accountpassword.isEmpty());                        
 
                                     try {
-                                        File folder = new File("UserAccounts");
+
+                                        File folder = new File(BASE_PATH + "UserAccounts");
                                         if (!folder.exists()) {
                                             if (folder.mkdirs()) {
                                                 System.out.println("\n\033[31m NO ACCOUNTS FOUND. PLEASE CREATE AN ACCOUNT FIRST !!\033[0m\n");
@@ -566,6 +575,7 @@ public class QuickTix {
 
                                         File file = new File(folder, "Accounts.txt");
                                         if (!file.exists()) {
+
                                             try {
                                                 file.createNewFile();
                                                 System.out.println("\n\033[31m NO ACCOUNTS FOUND. PLEASE CREATE AN ACCOUNT FIRST !!\033[0m\n");
@@ -578,7 +588,6 @@ public class QuickTix {
 
                                         Scanner fileScanner = new Scanner(file);
                                         String Line = "";
-
                                         String[] eachword = new String [5];
 
                                         while (fileScanner.hasNextLine()) {
@@ -630,8 +639,8 @@ public class QuickTix {
 
                                     try {
 
-                                        File folder =  new File("UserAccounts");
-                                        File file = new File("UserAccounts/Accounts.txt");
+                                        File folder = new File(BASE_PATH + "UserAccounts");
+                                        File file = new File(folder, "Accounts.txt");
 
                                         if (!(folder.exists())) {
                                             folder.mkdirs();
@@ -690,9 +699,9 @@ public class QuickTix {
                                         otp += (int)(Math.random() * 9.9999);
                                     }
                                                 
-                                    String otpFilepath = "Otp/" + enteredEmail.replace(" ", "") + "otp.txt";
+                                    String otpFilepath = BASE_PATH + "Otp/" + enteredEmail.replace(" ", "") + "otp.txt";
 
-                                    File otpFolder = new File("Otp");
+                                    File otpFolder = new File(BASE_PATH + "Otp");
                                     if (!otpFolder.exists()) {
                                         otpFolder.mkdirs();
                                     }
@@ -759,20 +768,17 @@ public class QuickTix {
                                 }
 
                             } while (accountname.isEmpty());
-                            System.out.println();
 
+                            System.out.println();
                             System.out.print("\033[34m ENTER YOUR PHONE \033[0m");
                             accountphonenumber = phoneNumberCheck();
-                                
                             accountemail = emailChecker();
-
                             System.out.println("\n\t\t\t\t\t\t\t\t   \033[32mYOUR INFO SAVED SUCCESFULLY !!\033[0m\n");
-
                         }
                         break;
                     }
-                    System.out.println("\033[36m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m\n\n");
 
+                    System.out.println("\033[36m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m\n\n");
                     System.out.println("\033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m\n");
                     System.out.println("                                                                               \033[1m\033[33m\"\u001B[4mBOOKING\u001B[0m\"\033[0m ");
                     System.out.println();
@@ -787,11 +793,11 @@ public class QuickTix {
 
                     event = printeventnames();
 
-                    // Venu date time and rate extraction from file
+                    // Venu date, time and rate extraction from file
                     try {
 
-                        File Folder = new File ("TicketsInfo");
-                        File file = new File("TicketsInfo/ticketsinfo.txt");
+                        File Folder = new File (BASE_PATH + "TicketsInfo");
+                        File file = new File(Folder, "ticketsinfo.txt");
 
                         try {
                             if (!(Folder.exists())) {
@@ -845,7 +851,8 @@ public class QuickTix {
                     int noofseats = 0;
 
                     while (true) {
-                    System.out.print("\n\033[33m PLEASE ENTER NO.OF SEATS TO BE RESERVED : \033[0m");
+
+                        System.out.print("\n\033[33m PLEASE ENTER NO.OF SEATS TO BE RESERVED : \033[0m");
                         String input = scanner.nextLine().trim();
 
                         try {
@@ -873,6 +880,7 @@ public class QuickTix {
                     System.out.println("\n\033[34m PLEASE ENTER SEAT NO. BELOW:\033[0m\n");
                     
                     for (int i = 0; i < seats.length; i++) {
+
                         System.out.print("\033[33m SEAT NO." + (i+1) + " : \033[0m");
                         seats[i] = scanner.nextLine().trim().toUpperCase();
 
@@ -943,6 +951,7 @@ public class QuickTix {
                     int paymentMethod = 0;
 
                     while (true) {
+
                         System.out.print("\n \033[33mENTER YOUR CHOICE : \033[0m");
 
                         try {
@@ -964,6 +973,7 @@ public class QuickTix {
                     String maskednumber = "";
 
                     switch (paymentMethod) {
+
                         case 1: {
                             System.out.println("\n\t\t\t\t\t\t\t\t \033[1m\033[33m\"CREDIT/DEBIT CARD PAYMENT\"\033[0m\n");
                             maskednumber = creditCardChecker();
@@ -1002,7 +1012,8 @@ public class QuickTix {
                     int amount = 0;
 
                     while (true) {
-                    System.out.print("\033[33m\n ENTER AMOUNT FOR ONLINE PATYMENT : \033[0m");
+
+                        System.out.print("\033[33m\n ENTER AMOUNT FOR ONLINE PATYMENT : \033[0m");
 
                         try {
                             String value = scanner.nextLine().trim();
@@ -1031,10 +1042,12 @@ public class QuickTix {
                 }
 
                 break;
+
                 case 3 : {
                     showTicket();
                 }
                 break;
+
                 case 4 : {
                     System.out.println("\033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m\n");
                     System.out.println("\t\t\t\t\t\t\t\t    \033[1m\033[33m\"\u001B[4mCREATE NEW ACCOUNT\"\u001B[0m\033[0m\n");
@@ -1049,6 +1062,7 @@ public class QuickTix {
                     break;
                 }
             }
+
             if (exitapp == false) {
                 System.out.println("\033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m\n");
                 System.out.println("\n \033[1m\033[33mPLEASE CHOOSE ONE OPTION \033[0m\n");
@@ -1056,7 +1070,8 @@ public class QuickTix {
                 System.out.println(" 0. EXIT QUICKTIX APP \033[0m\n ");
                 
                 while (true) {
-                System.out.print(" \033[33m\n ENTER YOUR CHOICE : \033[0m");
+
+                    System.out.print(" \033[33m\n ENTER YOUR CHOICE : \033[0m");
 
                     try {
                         String input = scanner.nextLine().trim();
@@ -1072,15 +1087,14 @@ public class QuickTix {
                         System.out.print(" \033[31m\n INVALID INPUT, PLEASE ENTER A NUMBER.\033[0m\n");
                     }
                 }
-                System.out.println();
 
+                System.out.println();
                 System.out.println();
                 System.out.println("\033[36m\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D\033[0m\n\n");
             }
             else {
                 break;
             }
-
         }   
         while (user == 1);
         System.out.println("\033[36m\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\033[0m");
@@ -1105,6 +1119,7 @@ public class QuickTix {
         String [][] seating = new String [rows][columns];
 
         for (int i = 0; i < rows; i++) {
+
             for (int j = 0; j < columns; j++) {
                 
                 if ( j <=8 ) {
@@ -1199,7 +1214,6 @@ public class QuickTix {
         System.out.print("\033[33mNUMBER (WITHOUT DASHES) : \033[0m");
         String phoneNumber = scanner.nextLine().trim(); 
         System.out.println();
-
         boolean phonenumbercheck = false;
 
         while (phonenumbercheck != true ) {
@@ -1262,7 +1276,6 @@ public class QuickTix {
         System.out.print("\033[33m ENTER YOUR EMAIL (SMALL LETTERS ONLY AND NO SPACE) : \033[0m");
         String email = scanner.nextLine().trim();
         System.out.println(); 
-
         boolean emialcheck = false;
 
         while (!emialcheck) {
@@ -1462,16 +1475,14 @@ public class QuickTix {
                 if (expirydateparts[0].length() == 2 && Integer.parseInt(expirydateparts[0]) >= 1 && Integer.parseInt(expirydateparts[0]) <= 12) {
                     monthcheck = true;
                 }
-
                 else {
                     System.out.println("\033[31m ERROR : INVALID MONTH IN EXPIRY DATE !!\033[0m");
                     break;
                 }
 
-                if( expirydateparts[1].length() == 4 && Integer.parseInt(expirydateparts[1]) >= 1958 && Integer.parseInt(expirydateparts[1]) <= 2035) {
+                if ( expirydateparts[1].length() == 4 && Integer.parseInt(expirydateparts[1]) >= 1958 && Integer.parseInt(expirydateparts[1]) <= 2035) {
                     yearcheck = true;
                 }
-
                 else {
                     System.out.println("\033[31m ERROR : INVALID YEAR OR CARD EXPIRES !!\033[0m");
                     break;
@@ -1479,6 +1490,7 @@ public class QuickTix {
             }
 
             validdate = yearcheck && monthcheck && continslash && validlength && donthasspace;
+
             if (validdate == true) {
                 System.out.println("\033[32m EXPIRY DATE VERIFIED SUCCESFULLY !!\033[0m\n");
                 break;
@@ -1492,7 +1504,6 @@ public class QuickTix {
         }
 
         String cvv;
-
         System.out.print("\033[33m ENTER CVV (3-4 DIGITS): \033[0m\033[0m");
         cvv = scanner.nextLine().trim();
         System.out.println();
@@ -1501,6 +1512,7 @@ public class QuickTix {
         boolean alldigits = false;
         boolean nospace = false;
         boolean validlengt = false;
+
         while (validcvv != true) {
             validcvv = false;
 
@@ -1560,13 +1572,13 @@ public class QuickTix {
         
         try {
 
-            File Folder = new File("Tickets");
+            File Folder = new File(BASE_PATH + "Tickets");
 
             if (!(Folder.exists())) {
                 Folder.mkdirs();
             }
 
-            String filePath = "Tickets/" + accountname.trim().replace(" ", "").toLowerCase() + "ticketfor" + event.trim().replace(" ", "").replace("\"", "").replace(":", "").toLowerCase() + ".txt";
+            String filePath = BASE_PATH +  "Tickets/" + accountname.trim().replace(" ", "").toLowerCase() + "ticketfor" + event.trim().replace(" ", "").replace("\"", "").replace(":", "").toLowerCase() + ".txt";
 
             FileWriter writer = new FileWriter(filePath);
             
@@ -1671,7 +1683,7 @@ public class QuickTix {
             System.out.println("\n\033[34m SELECT THE EVENT YOU BOOKED\033[0m\n");
             String event = printeventnames().trim().replace("\"", "").replace(":", "").toLowerCase().replace(" ", "");
 
-            String filePath = "Tickets/" + name.trim().replace(" ", "").toLowerCase() + "ticketfor" + event + ".txt";
+            String filePath = BASE_PATH + "Tickets/" + name.trim().replace(" ", "").toLowerCase() + "ticketfor" + event + ".txt";
 
             File file = new File(filePath);
 
@@ -1746,7 +1758,7 @@ public class QuickTix {
 
         try {
 
-            File folder = new File("UserAccounts");
+            File folder = new File(BASE_PATH + "UserAccounts");
             if (!folder.exists()) {
                 folder.mkdirs();
             }
@@ -1764,7 +1776,7 @@ public class QuickTix {
             writer.write(email.trim()+ ", ");
             writer.write(phoneNumber.trim()+ "\n");
             writer.close();
-            
+            System.out.println("\t\t\t\t\t\t\t\t\033[32mACCOUNT SAVED SUCCESFULLY !!! \033[0m\n");
         }
         catch (IOException e) {
             System.out.println("ERROR OCCURS WHILE SAVING ACCOUNT !!! ");
@@ -1775,8 +1787,8 @@ public class QuickTix {
         int counter = 0;
 
         try {
-            File Folder = new File ("TicketsInfo");
-            File eventfile = new File("TicketsInfo/ticketsinfo.txt");
+            File Folder = new File (BASE_PATH + "TicketsInfo");
+            File eventfile = new File(Folder, "ticketsinfo.txt");
 
             try {
                 if (!(Folder.exists())) {
@@ -1823,7 +1835,9 @@ public class QuickTix {
         }
 
         int t;
+
         while (true) {
+
             try {
 
                 System.out.print("\n \033[33mENTER YOUR CHOICE : \033[0m");
@@ -1845,9 +1859,10 @@ public class QuickTix {
         }
 
         String event = "";
+
         try {
-           File Folder = new File ("TicketsInfo");
-            File eventfile = new File("TicketsInfo/ticketsinfo.txt");
+            File Folder = new File (BASE_PATH + "TicketsInfo");
+            File eventfile = new File(Folder, "ticketsinfo.txt");
 
             try {
                 if (!(Folder.exists())) {
@@ -1867,6 +1882,7 @@ public class QuickTix {
 
             if (!fileS.hasNextLine()) {
                 System.out.println("\n\033[33mEVENT FILE IS EMPTY. NO EVENTS TO PRINT !!\033[0m");
+                fileS.close();
                 return "";
             }
 
@@ -1882,8 +1898,6 @@ public class QuickTix {
             }
                 
             fileS.close();
-            System.out.println("\t\t\t\t\t\t\t\t\033[32mACCOUNT SAVED SUCCESFULLY !!! \033[0m\n");
-
         }
         catch (FileNotFoundException e ) {
             System.out.println("TicketsInfo/ticketsinfo.txt is not opening due to error");
