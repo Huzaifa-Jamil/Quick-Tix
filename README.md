@@ -18,8 +18,8 @@ Files stored relative to project directory.
 
 ---
 
-### v2.0.0 — UI & Input Refinement
-- UI layout improvements (menu spacing, borders)
+### v2.0.0 — Minor Changes
+- Fixed input mismatch bugs, file/folder checks
 - No functional changes from v1.0.0
 
 ---
@@ -52,10 +52,14 @@ The application will automatically use:
 ---
 
 ### 2. Run JAR version
-- Download and extract `QuickTix-v3.0.0.zip`
 
-Open terminal in extracted folder:
+- Download the `Source code (zip)` from the **Latest Releases** which will be named as `QuickTix-v3.0.0.zip`
+- Extract the zip file
+- Note: Java 14 or higher installed 
+
+Open terminal in the extracted folder and run:
 
 ```bash
-cd path/to/jar
 java -jar Quick_Tix.jar
+
+```
